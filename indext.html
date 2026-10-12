@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আল ইনাব ইসলামিক ফাউন্ডেশন</title>
+    <style>
+        /* মূল ডিজাইন ও রঙ (ইসলামিক গ্রিন থিম) */
+        body { font-family: 'Arial', 'Kalpurush', sans-serif; margin: 0; padding: 0; background-color: #f4f7f5; color: #2c3e50; line-height: 1.6; }
+        header { background-color: #0b462c; color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 32px; letter-spacing: 1px; }
+        header p { margin: 10px 0 0; font-size: 18px; opacity: 0.9; font-style: italic; }
+        
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        h2 { color: #0b462c; border-bottom: 2px solid #0b462c; padding-bottom: 8px; margin-top: 35px; text-align: left; }
+        p { text-align: justify; font-size: 16px; }
+
+        /* ১. ইমেজ স্লাইডার স্টাইল (৫টি লোকাল ছবির জন্য) */
+        .slider { width: 100%; height: 350px; overflow: hidden; position: relative; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+        .slider img { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .slider img.active { display: block; animation: fade 1.2s; }
+        @keyframes fade { from {opacity: 0.5} to {opacity: 1} }
+
+        /* লক্ষ্য ও উপদেশ সেকশন স্টাইল */
+        .grid-list { list-style: none; padding: 0; text-align: left; }
+        .grid-list li { background: #f9fbf9; padding: 15px; margin-bottom: 10px; border-left: 5px solid #0b462c; border-radius: 0 8px 8px 0; font-size: 16px; }
+        .grid-list li strong { color: #0b462c; display: block; margin-bottom: 5px; font-size: 17px; }
+        
+        .hadith-box { background-color: #eef7f2; border: 1px dashed #0b462c; padding: 20px; border-radius: 8px; margin: 25px 0; font-style: italic; font-size: 17px; color: #115636; }
+
+        /* ফর্ম স্টাইল */
+        form { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; text-align: left; background: #fdfdfd; padding: 20px; border: 1px solid #eef2ef; border-radius: 8px; }
+        label { font-weight: bold; color: #2c3e50; }
+        input, textarea, button { padding: 12px; border: 1px solid #ccd5ce; border-radius: 6px; font-size: 16px; width: 100%; box-sizing: border-box; }
+        input:focus, textarea:focus { border-color: #0b462c; outline: none; background-color: #fafdfb; }
+        button { background-color: #0b462c; color: white; cursor: pointer; border: none; font-weight: bold; font-size: 18px; transition: 0.3s; }
+        button:hover { background-color: #062f1d; }
+
+        /* লাইভ নোটিফিকেশন সিস্টেম */
+        .status-box { display: none; padding: 25px; margin-top: 25px; border-radius: 8px; font-size: 19px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .waiting { background-color: #fff9e6; color: #856404; border: 1px solid #ffeeba; }
+        .success { background-color: #ebf9eb; color: #155724; border: 1px solid #c3e6cb; }
+        
+        /* ডিজিটাল আইডি কার্ড ডিজাইন */
+        .id-card { display: none; background: linear-gradient(135deg, #0b462c, #062f1d); color: white; padding: 30px; margin-top: 25px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
+        .id-card::before { content: ""; position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .id-card h3 { margin: 0 0 5px 0; font-size: 24px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; }
+        .id-card p { text-align: center; margin: 10px 0; font-size: 15px; opacity: 0.8; }
+        .id-number { font-size: 28px; background: white; color: #0b462c; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; letter-spacing: 1px; display: inline-block; width: 100%; box-sizing: border-box; }
+        
+        footer { margin-top: 50px; background: #2c3e50; color: white; padding: 20px; font-size: 14px; text-align: center; }
+        footer a { color: #2ecc71; text-decoration: none; font-weight: bold; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>আল ইনাব ইসলামিক ফাউন্ডেশন</h1>
+    <p>"দ্বীন প্রচার, কুরআন শিক্ষা এবং মানবতার সেবায় একটি নিঃস্বার্থ প্রয়াস"</p>
+</header>
+
+<div class="container">
+    <!-- ১. ৫টি ছবির অটোমেটিক স্লাইডার (আপনার images ফোল্ডার থেকে সরাসরি সংযুক্ত) -->
+    <div class="slider">
+        <img src="images/slider1.jpg" class="active" alt="ইসলামিক ব্যানার ১">
+        <img src="images/slider2.jpg" alt="ইসলামিক ব্যানার ২">
+        <img src="images/slider3.jpg" alt="ইসলামিক ব্যানার ৩">
+        <img src="images/slider4.jpg" alt="ইসলামিক ব্যানার ৪">
+        <img src="images/slider5.jpg" alt="ইসলামিক ব্যানার ৫">
+    </div>
+
+    <!-- আমাদের পরিচিতি -->
+    <h2>আমাদের পরিচিতি ও লক্ষ্য</h2>
+    <p>আসসালামু আলাইকুম ওয়া রাহমাতুল্লাহ। <strong>"আল ইনাব ইসলামিক ফাউন্ডেশন"</strong> একটি সম্পূর্ণ অরাজনৈতিক ও দ্বীনি সেবামূলক অনলাইন প্ল্যাটফর্ম। আমাদের এই পথচলা শুরু হয়েছে বগুড়ার ধুনট থানার গোসাইবাড়ী ইউনিয়নের প্রত্যন্ত গ্রাম থেকে। প্রতিকূল পরিবেশে ইসলাম ও সুন্নাহর সঠিক বার্তা মানুষের দ্বারে দ্বারে পৌঁছে দেওয়া এবং পিছিয়ে পড়া সমাজকে ইসলামের আলোয় আলোকিত করাই আমাদের মূল লক্ষ্য।</p>
+    
+    <ul class="grid-list">
+        <li><strong>📚 শুদ্ধ ইসলামী শিক্ষা বিস্তার:</strong> শিশুদের মাঝে একদম বিনামূল্যে কুরআন, সহীহ হাদিস ও ইসলামের বুনিয়াদি নৈতিক শিক্ষা প্রদানের জন্য মক্তব পরিচালনা করা।</li>
+        <li><strong>🤝 নিঃস্বার্থ মানবসেবা:</strong> সমাজের অসহায়, এতিম, বিধবা ও দুস্থ মানুষের কষ্ট লাঘবে সামর্থ্য অনুযায়ী খাদ্য, বস্ত্র ও চিকিৎসার ব্যবস্থা করা।</li>
+        <li><strong>🌱 আদর্শ সমাজ গঠন:</strong> যুবসমাজকে অপসংস্কৃতি ও সামাজিক অবক্ষয় থেকে মুক্ত করে সুন্নাহর আলোয় একটি তাকওয়াবান সমাজ বিনির্মাণ করা।</li>
+    </ul>
+
+    <!-- বাণী/হাদিস বক্স -->
+    <div class="hadith-box">
+        "তোমাদের মধ্যে সেই ব্যক্তিই সর্বোত্তম, যিনি কুরআন শিক্ষা করে এবং অন্যকে তা শিক্ষা দেয়।" — [সহীহ বুখারী: ৫০২৭]
+    </div>
+
+    <!-- গুরুত্বপূর্ণ দ্বীনি উপদেশ -->
+    <h2>দ্বীনি ভাইদের উদ্দেশ্যে কিছু জরুরি উপদেশ</h2>
+    <p>বর্তমান ফিতনার যুগে নিজের ঈমান ও আমল রক্ষা করা সবচেয়ে বড় ইবাদত। সমাজ বা চারপাশের মানুষ দ্বীন থেকে দূরে সরে গেলেও একজন মুমিন হিসেবে আমাদের করণীয়:</p>
+    <ul class="grid-list">
+        <li><strong>১. পাঁচ ওয়াক্ত নামাজ প্রতিষ্ঠা:</strong> সব ব্যস্ততা পাশে রেখে জামায়াতের সাথে pf পাঁচ ওয়াক্ত সালাত সময়মতো আদায় করুন। নামাজই মুমিনের মূল চাবিকাঠি।</li>
+        <li><strong>২. চরিত্র ও ব্যবহারের মাধুর্য:</strong> আপনার গ্রাম বা আশেপাশের মানুষ যদি ইসলাম মানতে না চায়, তবে তাদের সাথে ঝগড়া না করে নিজের সর্বোত্তম ব্যবহার ও সুন্দর চরিত্র দিয়ে তাদের ইসলামের দিকে আকৃষ্ট করুন।</li>
+        <li><strong>৩. হালাল উপার্জন ও সততা:</strong> জীবনে বরকত পাওয়ার একমাত্র মাধ্যম হলো শতভাগ হালাল রিযিক। সর্বদা সত্য কথা বলুন এবং ধোঁকাবাজি থেকে দূরে থাকুন।</li>
+        <li><strong>৪. ফিতনা ও গীবত থেকে দূরে থাকা:</strong> অনর্থক বিতর্ক, অন্যের গীবত বা সমালোচনা এবং ইন্টারনেটের গুনাহের কাজ থেকে নিজের চোখ ও কানকে হেফাজত করুন।</li>
+    </ul>
+
+    <hr style="border: 0; border-top: 1px solid #eef2ef; margin: 30px 0;">
+
+    <!-- সদস্য হওয়ার ফর্ম -->
+    <h2>ফাউন্ডেশনের সদস্য পদের আবেদন ফরম</h2>
+    <p>আপনি যদি দূর থেকেও আমাদের এই দ্বীনি ও সামাজিক কাজের একজন গর্বিত অংশীদার বা ভলান্টিয়ার হতে চান, তবে নিচের ফরমটি নির্ভুলভাবে পূরণ করুন।</p>
+    
+    <form id="memberForm" name="al-inab-members" method="POST" data-netlify="true">
+        <input type="hidden" name="Generated_Member_ID" id="hiddenMemberId">
+        
+        <label>আপনার সম্পূর্ণ নাম:</label>
+        <input type="text" name="Name" placeholder="বাংলা বা ইংরেজিতে লিখুন" required>
+        
+        <label>মোবাইল নম্বর (যোগাযোগ/বিকাশ):</label>
+        <input type="tel" name="Phone" placeholder="যেমন: 017XXXXXXXX" required>
+        
+        <label>আপনার সম্পূর্ণ ঠিকানা:</label>
+        <input type="text" name="Address" placeholder="গ্রাম, থানা, জেলা" required>
+        
+        <label>আপনার শিক্ষাগত যোগ্যতা / পেশা:</label>
+        <input type="text" name="Profession" placeholder="যেমন: শিক্ষার্থী, ব্যবসায়ী, চাকুরিজীবী ইত্যাদি" required>
+        
+        <label>আপনি কেন আমাদের এই ফাউন্ডেশনে যুক্ত হতে চান?</label>
+        <textarea name="Reason" placeholder="আপনার মূল্যবান মতামতটি এখানে লিখুন..." rows="4" required></textarea>
+        
+        <button type="submit" id="submitBtn">আবেদন জমা দিন</button>
+    </form>
+
+    <!-- লাইভ নোটিফিকেশন টাইমার বক্সসমূহ -->
+    <div id="waitingBox" class="status-box waiting">
+        ⏳ দয় করে <span id="countdown">10</span> সেকেন্ড অপেক্ষা করুন, আপনার তথ্যসমূহ আইনিভাবে যাচাই করা হচ্ছে...
+    </div>
+
+    <div id="successBox" class="status-box success">
+        🎉 আলহামদুলিল্লাহ! অভিনন্দন, আপনার আবেদনটি সফল হয়েছে এবং আপনি আমাদের ফাউন্ডেশনের একজন সদস্য হিসেবে অন্তর্ভুক্ত হয়েছেন।
+    </div>
+
+    <!-- ইউনিক মেম্বারশিপ আইডি কার্ড ডিসপ্লে -->
+    <div id="idCardBox" class="id-card">
+        <h3>আল ইনাব ইসলামিক ফাউন্ডেশন</h3>
+        <p>অফিসিয়াল সদস্য ডিজিটাল আইডি কার্ড</p>
+        <div style="font-size: 16px; margin-top: 15px; opacity: 0.9;">আপনার ইউনিক আইডি নম্বর:</div>
+        <div class="id-number" id="displayMemberId"></div>
+        <p style="font-size: 12px; margin-top: 15px; color: #2ecc71;">*এই আইডি নম্বরটি আপনার ভবিষ্যতের রেফারেন্সের জন্য সংরক্ষণ করুন।</p>
+    </div>
+</div>
+
+<footer>
+    <p>© ২০২৬ আল ইনাব ইসলামিক ফাউন্ডেশন | গোসাইবাড়ী, ধুনট, বগুড়া।</p>
+    <p>আমাদের সাথে যুক্ত থাকুন: <a href="https://facebook.com" target="_blank" id="fbLink">অফিসিয়াল ফেসবুক পেজ</a></p>
+</footer>
+
+<script>
+    // --- ইমেজ স্লাইডার অটোমেটিক চেঞ্জ স্ক্রিপ্ট ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider img');
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
